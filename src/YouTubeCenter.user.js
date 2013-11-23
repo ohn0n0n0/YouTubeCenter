@@ -4602,7 +4602,7 @@
                 var cfg, errorType = "unknown";
                 try {
                   if (spflink) {
-                    cfg = JSON.parse(r.responseText);
+                    cfg = JSON.parse(r.responseText)[1];
                     if (ytcenter.utils.isArray(cfg)) {
                       if (cfg.length === 1 && cfg[0].swfcfg)
                         cfg = cfg[0];
@@ -4618,7 +4618,7 @@
                     } else if (typeof cfg.html["player-unavailable"] === "string" && cfg.html["player-unavailable"] !== "" && cfg.html["player-unavailable"].indexOf("<div") !== -1) {
                       throw "unavailable";
                     } else {
-                      cfg = JSON.parse(r.responseText);
+                      cProStatus
                       if (cfg && cfg.html && cfg.html.content && cfg.html.content.indexOf("<script>var ytplayer = ytplayer || {};ytplayer.config = ") !== -1) {
                         cfg = cfg.html.content.split("<script>var ytplayer = ytplayer || {};ytplayer.config = ")[1];
                         cfg = cfg.split(";</script>")[0];
